@@ -1,0 +1,14 @@
+pyproject.toml
+setup.py
+Windsurfer.egg-info/PKG-INFO
+Windsurfer.egg-info/SOURCES.txt
+Windsurfer.egg-info/dependency_links.txt
+Windsurfer.egg-info/requires.txt
+Windsurfer.egg-info/top_level.txt
+tests/test_analyze_generators.py
+windsurfer/__init__.py
+windsurfer/analyze/__init__.py
+windsurfer/analyze/generators.py
+windsurfer/ansatz/__init__.py
+windsurfer/ansatz/hamiltonian.py
+windsurfer/hamiltonians/oneDlattice.py

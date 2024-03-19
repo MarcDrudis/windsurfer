@@ -1,0 +1,32 @@
+Metadata-Version: 2.1
+Name: Windsurfer
+Version: 0.0.0
+Summary: Repository for a quantum prototype
+Author-email: Marc Drudis <MarcSanzDrudis@outlook.com>
+Project-URL: Homepage, https://github.com/qiskit-community/quantum-prototype-template
+Project-URL: Bug Tracker, https://github.com/qiskit-community/quantum-prototype-template/issues
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: certifi>=2021.5.30
+Requires-Dist: importlib_metadata>=4.8.1
+Requires-Dist: qiskit>=1.0
+Requires-Dist: qiskit_algorithms
+Requires-Dist: matplotlib
+Requires-Dist: joblib
+Requires-Dist: tqdm
+Provides-Extra: dev
+Requires-Dist: coverage>=5.5; extra == "dev"
+Requires-Dist: pylint>=2.9.5; extra == "dev"
+Requires-Dist: nbqa>=1.1.1; extra == "dev"
+Requires-Dist: treon>=0.1.3; extra == "dev"
+Requires-Dist: pytest>=6.2.5; extra == "dev"
+Requires-Dist: pytest-randomly>=1.2.0; extra == "dev"
+Requires-Dist: mypy>=0.780; extra == "dev"
+Requires-Dist: mypy-extensions>=0.4.3; extra == "dev"
+Requires-Dist: jupyter-sphinx>=0.3.2; extra == "dev"
+Requires-Dist: nbsphinx>=0.8.8; extra == "dev"
+Requires-Dist: sphinx-autodoc-typehints>=1.17.0; extra == "dev"
+Requires-Dist: qiskit-sphinx-theme~=1.16.0; extra == "dev"
+Requires-Dist: reno>=3.5.0; extra == "dev"
+Requires-Dist: isort; extra == "dev"
+Requires-Dist: black; extra == "dev"
