@@ -29,8 +29,9 @@ def ansatz_QRTE_Hamiltonian(H: SparsePauliOp | Pauli, reps: int = 1) -> QuantumC
 def ansatz_QITE_Hamiltonian(
     H: SparsePauliOp | Pauli, reps: int = 1, prep_circuit: QuantumCircuit = None
 ) -> QuantumCircuit:
-    qc = QuantumCircuit(H.num_qubits) if qc is None else prep_circuit.copy()
-    stabilizers = StabilizerState(qc)
+    qc = QuantumCircuit(H.num_qubits) if prep_circuit is None else prep_circuit.copy()
+    stabilizers = StabilizerState(qc).clifford.to_labels(mode="S")
+    print(stabilizers)
 
     if isinstance(H, SparsePauliOp):
         for i, term in enumerate(list(H.paulis) * reps):
@@ -38,16 +39,22 @@ def ansatz_QITE_Hamiltonian(
             for s in stabilizers:
                 if term.anticommutes(s):
                     pauli = term @ Pauli(s)
+                    continue
 
-            qc.compose(
-                evolve_pauli(term, time=Parameter(f"θ[{i}]") / 2, cx_structure="chain"),
-                inplace=True,
-            )
-    elif isinstance(H, Pauli):
-        qc.compose(
-            evolve_pauli(H, time=Parameter(f"θ") / 2, cx_structure="chain"),
-            inplace=True,
-        )
+            if pauli is not None:
+                qc.compose(
+                    evolve_pauli(
+                        term, time=Parameter(f"θ[{i}]") / 2, cx_structure="chain"
+                    ),
+                    inplace=True,
+                )
+            else:
+                print(f"We did not find a Pauli for {term}")
+    # elif isinstance(H, Pauli):
+    #     qc.compose(
+    #         evolve_pauli(H, time=Parameter(f"θ") / 2, cx_structure="chain"),
+    #         inplace=True,
+    #     )
     else:
         raise ValueError("H has to be either SparsePauliOp or Pauli.")
 
@@ -60,10 +67,11 @@ if __name__ == "__main__":
     H = SparsePauliOp.from_sparse_list(
         [("XZ", [2, 1], 1.3), ("Z", [-1], 1.9), ("XX", [0, 1], 1.3)], num_qubits=4
     )
-    qc = ansatz_QRTE_Hamiltonian(H)
+    qc = ansatz_QITE_Hamiltonian(H)
     print(qc.decompose())
-    print(
-        StabilizerState(qc.assign_parameters(np.zeros(qc.num_parameters))).clifford[
-            "Stabilizer"
-        ]
-    )
+    print(qc)
+    # print(
+    #     StabilizerState(qc.assign_parameters(np.zeros(qc.num_parameters))).clifford[
+    #         "Stabilizer"
+    #     ]
+    # )

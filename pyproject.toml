@@ -22,6 +22,7 @@ dependencies = [
     "matplotlib",
     "joblib",
     "tqdm",
+    "windsurfer @ git+ssh:git@github.com:MarcDrudis/windsurfer.git#egg=windsurfer",
 ]
 
 [project.optional-dependencies]
