@@ -1,0 +1,16 @@
+additional-data:
+  an other: 10
+result:
+  artifact-dir: /home/marc/Documents/windsurfer/examples/
+  d: l
+  e: /home/marc/Documents/windsurfer/examples/-3311757722827889788.npy
+  f: 6
+  timestamp: '2024-04-23T10:58:42.878119'
+setup:
+  a:
+  - 1
+  - 1
+  - 1
+  b: h
+  c: 3
+  timestamp: '2024-04-23T10:58:42.878105'

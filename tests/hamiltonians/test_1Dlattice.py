@@ -9,8 +9,8 @@ from qiskit.quantum_info.states.statevector import SparsePauliOp
 from windsurfer.hamiltonians.oneDlattice import lattice_hamiltonian
 
 
-class TestPrototypeTemplate(TestCase):
-    """Tests prototype template."""
+class TestHamiltonians(TestCase):
+    """Tests the creation of Hamiltonians in a lattice from a set of generators."""
 
     def test_pair_hamiltonian(self):
         """Tests template class."""
